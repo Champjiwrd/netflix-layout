@@ -1,4 +1,4 @@
-# netflix-layout
+# vue-layout
 
 ## Project setup
 ```
