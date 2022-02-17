@@ -16,6 +16,7 @@
         style="font-size: 14px"
         :class="menu.path === $route.path ? 'white--text' : 'grey--text'"
         :key="index"
+        @click="gotopage(menu)"
       >
         {{ menu.title }}
       </div>
@@ -42,8 +43,20 @@
       </v-menu>
     </div>
     <v-spacer></v-spacer>
-    <!-- <v-icon class="mr-4" small @click="doSearch()">mdi-magnify</v-icon>
-    <v-avatar class="rounded" tile color="yellow" size="35">
+    <v-text-field
+      v-if="searchBox"
+      color="yellow"
+      outlined
+      hide-details
+      dense
+      autofocus
+      append-icon="mdi-magnify"
+      @blur="hideSearchBox()"
+    ></v-text-field>
+    <v-icon v-if="!searchBox" class="mr-4" small @click="doSearch()">
+      mdi-magnify
+    </v-icon>
+    <!-- <v-avatar class="rounded" tile color="yellow" size="35">
       <v-icon color="black"> mdi-account </v-icon>
     </v-avatar> -->
   </v-app-bar>
@@ -54,14 +67,28 @@ export default {
   data: () => ({
     menuBar: [
       { title: "Home", path: "/" },
-      { title: "เพลงทั้งหมด", path: "/allsong" },
-      { title: "ศิลปินทั้งหมด", path: "/allartist" },
+      { title: "เพลงทั้งหมด", path: "/allsongs" },
+      { title: "ศิลปินทั้งหมด", path: "/allartists" },
       { title: "About us", path: "/aboutus" },
     ],
+    searchBox: false,
   }),
   methods: {
     doSearch() {
-      console.log("search");
+      console.log("search", this.searchBox);
+      if (!this.searchBox) {
+        this.searchBox = true;
+      }
+    },
+    hideSearchBox() {
+      this.searchBox = false;
+    },
+
+    gotopage(menu) {
+      console.log(menu);
+      this.$router.push({
+        path: menu.path,
+      });
     },
   },
 };

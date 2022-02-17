@@ -1,10 +1,7 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-card :class="{ 'on-hover': hover }" class="d-flex">
-      <div class="d-flex align-center pa-1 green black--text">
-        {{ chart }}
-      </div>
-      <v-img :height="'100'" :width="'100'" :src="music.image"></v-img>
+      <v-img :height="imageSize" :width="imageSize" :src="music.image"></v-img>
       <v-card-text>
         <div class="white--text">{{ music.name }}</div>
         <div>{{ music.artist }}</div>
@@ -17,9 +14,15 @@
 export default {
   props: {
     music: Object,
-    chart: Number,
   },
+  data: () => ({
+    imageSize: 60,
+  }),
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.v-card.on-hover {
+  cursor: pointer;
+}
+</style>
