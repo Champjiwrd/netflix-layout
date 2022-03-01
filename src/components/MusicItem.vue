@@ -1,11 +1,25 @@
 <template>
   <v-hover v-slot="{ hover }">
-    <v-card :class="{ 'on-hover': hover }" class="d-flex">
-      <v-img :height="imageSize" :width="imageSize" :src="music.image"></v-img>
-      <v-card-text>
-        <div class="white--text">{{ music.name }}</div>
-        <div>{{ music.artist }}</div>
-      </v-card-text>
+    <v-card :class="{ 'on-hover': hover }" class="d-flex secondary">
+      <v-img
+        :height="imageSize"
+        :max-height="imageSize"
+        :max-width="imageSize"
+        :width="imageSize"
+        :src="music.image"
+      ></v-img>
+      <v-list class="transparent">
+        <v-list-item>
+          <v-list-item-content class="ma-0 pa-0">
+            <v-list-item-title
+              class="text-wrap title-song"
+              tag="p"
+              v-text="music.name"
+            ></v-list-item-title>
+            <v-list-item-subtitle v-text="music.artist"></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-card>
   </v-hover>
 </template>
@@ -16,7 +30,7 @@ export default {
     music: Object,
   },
   data: () => ({
-    imageSize: 60,
+    imageSize: 80,
   }),
 };
 </script>

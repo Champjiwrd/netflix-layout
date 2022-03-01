@@ -1,20 +1,18 @@
 <template>
   <v-app-bar
     app
-    :color="'#121212'"
     dense
     elevate-on-scroll
     scroll-target="#scrolling-techniques-7"
   >
     <v-app-bar-title class="text-uppercase">
-      <span class="yellow--text">Champignon</span>
+      <span class="third--text">Champignon</span>
     </v-app-bar-title>
     <div v-if="$vuetify.breakpoint.smAndUp" class="d-flex">
       <div
         v-for="(menu, index) in menuBar"
         class="ml-2 menu-bar"
         style="font-size: 14px"
-        :class="menu.path === $route.path ? 'white--text' : 'grey--text'"
         :key="index"
         @click="gotopage(menu)"
       >

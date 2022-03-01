@@ -1,6 +1,6 @@
 <template>
   <div>
-    คอร์ดเพลงยอดนิยม
+    <b>คอร์ดเพลงยอดนิยม</b>
     <div class="mt-2">
       <v-row>
         <v-col
@@ -9,6 +9,7 @@
           class=""
           v-for="(music, index) in musicList"
           :key="index"
+          @click="openSong()"
         >
           <TopChartItem :music="music" :chart="index + 1" />
         </v-col>
@@ -78,12 +79,20 @@ export default {
       },
     ],
   }),
+  methods: {
+    openSong() {
+      console.log("click");
+      this.$router.push({
+        path: "/song",
+      });
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .v-card.on-hover {
-  box-shadow: inset 0px 0px 0px 2px white;
+  // box-shadow: inset 0px 0px 0px 2px white;
   cursor: pointer;
 }
 </style>

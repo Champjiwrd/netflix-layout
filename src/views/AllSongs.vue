@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    เพลงทั้งหมด
+    <b>เพลงทั้งหมด</b>
     <div class="my-4 d-flex align-center">
       <v-text-field
         outlined
@@ -20,6 +20,7 @@
           sm="6"
           v-for="(music, index) in musicList"
           :key="index"
+          @click="openSong()"
         >
           <MusicItem class="" :music="music" />
         </v-col>
@@ -27,12 +28,7 @@
     </div>
     <v-divider class="mt-4"></v-divider>
     <div class="text-center mt-6">
-      <v-pagination
-        v-model="page"
-        :length="6"
-        :color="'#FBBC04'"
-        class="black--text"
-      ></v-pagination>
+      <v-pagination v-model="page" :length="6" color="primary"></v-pagination>
     </div>
   </v-container>
 </template>
@@ -99,6 +95,14 @@ export default {
       },
     ],
   }),
+  methods: {
+    openSong() {
+      console.log("click");
+      this.$router.push({
+        path: "/song",
+      });
+    },
+  },
 };
 </script>
 

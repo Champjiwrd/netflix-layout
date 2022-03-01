@@ -9,5 +9,17 @@ Vue.use(Vuetify);
 export default new Vuetify({
   //   preset,
   //   rtl: true,
-  theme: { dark: true },
+  theme: {
+    dark: false,
+    themes: {
+      dark: {
+        primary: "#FBBC04",
+      },
+      light: {
+        primary: "#412554",
+        secondary: "#FFE4A8",
+        third: "#008B52",
+      },
+    },
+  },
 });

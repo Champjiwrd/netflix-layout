@@ -1,6 +1,6 @@
 <template>
   <div>
-    คอร์ดเพลงใหม่
+    <b>คอร์ดเพลงใหม่</b>
     <div class="mt-2">
       <!-- <div v-if="!$vuetify.breakpoint.smAndUp" class="d-flex flex-wrap">
         <v-hover
@@ -35,7 +35,8 @@
               'on-hover': hover,
             }"
             :width="$vuetify.breakpoint.smAndUp ? '150' : '150'"
-            class="ma-2"
+            class="ma-2 secondary"
+            @click="openSong()"
           >
             <v-img
               :height="$vuetify.breakpoint.smAndUp ? '150' : '150'"
@@ -43,7 +44,7 @@
               :src="music.image"
             ></v-img>
             <v-card-text :class="$vuetify.breakpoint.smAndUp ? '' : 'pa-0'">
-              <div class="white--text">{{ music.name }}</div>
+              <b>{{ music.name }}</b>
               <div>{{ music.artist }}</div>
             </v-card-text>
           </v-card>
@@ -98,12 +99,20 @@ export default {
       },
     ],
   }),
+  methods: {
+    openSong() {
+      console.log("click");
+      this.$router.push({
+        path: "/song",
+      });
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .v-card.on-hover {
-  box-shadow: inset 0px 0px 0px 2px white;
+  // box-shadow: inset 0px 0px 0px 2px white;
   cursor: pointer;
 }
 </style>
